@@ -4,7 +4,7 @@ def contains(elem, array:list)->bool:
         if elem == i:
             return True
 
-
+# O algoritmo abaixo está entre O(N) e O(N*M)
 def intersection(firstArray:list, secondArray:list)->list:
     result = []
     # poderia incluir aqui uma condição para iterar primeiro sobre a array de menor tamanho
