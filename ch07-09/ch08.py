@@ -27,7 +27,7 @@ def intersection(arr1: list, arr2: list)->list:
 
 # Q2: Uma função O(N) que retorna a primeira duplicata numa array de strings:
 # Assume-se que existe pelo menos uma duplicata
-# 4 -> 3
+
 def first_duplicate(arr:list)->str:
     steps = 0
     for i in range(len(arr)):
