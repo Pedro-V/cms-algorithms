@@ -110,7 +110,7 @@ def my_reverse(string:str)->str:
     result = Stack()
     currrent_index = 1
 
-    while currrent_index < (len(string) + 1):
+    while currrent_index <= len(string):
         result.push(string[-currrent_index])
         currrent_index += 1
 
