@@ -1,8 +1,3 @@
-from inspect import currentframe
-from multiprocessing.dummy import current_process
-from re import S
-
-
 class Stack:
     def __init__(self) -> None:
         self.__data = []
