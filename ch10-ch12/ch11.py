@@ -44,8 +44,23 @@ def first_x_index(word:str)->int:
 
 # Talvez as condições não tenham que ser tão hardcoded assim
 def num_short_paths(rows:int, columns:int)->int:
-    if (rows <= 0 or columns <= 0) or (rows, columns) == (1, 1):
-        return 0
-    elif (rows, columns) == (1, 2) or (rows, columns) == (2, 1):
+    if rows == 1 or columns == 1:
         return 1
     return num_short_paths(rows - 1, columns) + num_short_paths(rows, columns - 1)
+
+# Essa função não é eficiente. Podemos fazer uso de memoization pra aumentar a eficiência:
+
+def memoized_short_paths(rows:int, cols:int, memo: dict):
+    # caso base
+    grid_size = (rows, cols)
+    if rows == 1 or cols == 1:
+        return 1
+    
+    if grid_size not in memo:
+        memo[grid_size] = memoized_short_paths(rows - 1, cols, memo) + memoized_short_paths(rows, cols - 1, memo)
+
+    return memo[grid_size]
+
+# Principal: É extremamente eficiente mesmo para grids mtt grandes, como 100x100, 600x300, etc
+def sum_short_paths(rows:int, cols:int):
+    return memoized_short_paths(rows, cols, {})
