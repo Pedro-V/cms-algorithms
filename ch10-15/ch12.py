@@ -69,3 +69,8 @@ def memoized_short_paths(rows:int, cols:int, memo: dict):
 # Principal: É extremamente eficiente mesmo para grids mtt grandes, como 100x100, 600x300, etc
 def sum_short_paths(rows:int, cols:int):
     return memoized_short_paths(rows, cols, {})
+
+# Importante lembrar que mesmo algoritmos recursivos que adotem técnicas de programação dinâmica (memoization)
+# serão, em geral, mais lentos e com um maior consumo de memória que algoritmo baseado num loop for
+
+# Mas muitas vezes, algoritmos recursivos são mais intuitivos que suas contrapartes usando loop for
