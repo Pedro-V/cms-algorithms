@@ -5,3 +5,5 @@ Soluções para alguns exercícios [deste livro](https://ipfs.io/ipfs/bafykbzace
 Códigos escritos em Python, Ruby e C.
 
 Trabalhando alguns conceitos como Big O, análise algorítmica e as principais estruturas de dados.
+
+O capítulo 17 (ch17.py) é, em particular, muito interessante.
