@@ -117,17 +117,93 @@ def greatest_profit(arr:list)->int:
 # Complexidade de tempo: O(N)
 # Complexidade de espaço: O(1)
 
-# Q4: Designar um algoritmo que aceita uma lista L e retorna os dois números de L que, multiplicados entre si, retornam o maior produto possível entre dois números distintos de L
+# Q4: Designar um algoritmo que aceita uma lista L e retorna os dois números de L que,
+# multiplicados entre si, retornam o maior produto possível entre dois números 
+# distintos de L
 def greatest_product(arr:list)->list:
-    complement_hash_table = {}
-    max_product = arr[0] * arr[1]
+    # Todos os números serão maiores que -inf
+    greatest_number = -float('inf')
+    second_greatest_number = -float('inf')
 
-    for num in arr:
-        complemento = 
-        if 
+    # Todos os números serão maiores que +inf
+    smallest_number = float('inf')
+    second_smallest_number = float('inf')
 
-# Q5: Dada uma array de amostras de temperaturas que tem um limite inferior 97 graus F e superior 99 graus F,
-# ordenar a array em O(N)
+    for i in arr:
+        if i >= greatest_number:
+            second_greatest_number = greatest_number
+            greatest_number = i
+        elif i >= second_greatest_number:
+            second_greatest_number = i
 
-def ord_temps(arr: list)->list:
+        if i <= smallest_number:
+            second_smallest_number = smallest_number
+            smallest_number = i
+        elif i <= second_smallest_number:
+            second_smallest_number = i
+
+    greatest_product_positive = greatest_number * second_greatest_number
+    greatest_product_negative = smallest_number * second_smallest_number
+
+    return max(greatest_product_positive, greatest_product_negative)
+
+# Complexidade de tempo: O(N)
+# Complexidade de espaço: O(1)
+
+# Q5: Dada uma array de amostras de temperaturas que tem um limite inferior igual a 
+# 97 graus F e superior igual a 99 graus F, ordenar a array em O(N)
+
+def sort_temps(arr: list[float])->list[float]:
+    # Criamos uma hash table que irá armazenar as ocorrências de temperatura
+    hash_temps :dict[float, int] = {}
+
+    for temp in arr:
+        if hash_temps.get(temp):
+            hash_temps[temp] += 1
+        else:
+            hash_temps[temp] = 1
     
+    sorted_arr :list[float]= []
+    temperature :int = 970
+    while temperature <= 990:
+        if hash_temps.get(temperature / 10):
+            for i in range(hash_temps[temperature]):
+                sorted_arr.append(temperature/10)
+        
+        temperature += 1
+    
+    return sorted_arr
+
+# Complexidade de tempo: O(N)    
+# Complexidade de espaço: O(N), pois criamos uma hash table e uma array com N elementos cada
+
+
+# Q6: Uma função que retorna o tamanho da maior sub-sequência consecutiva
+# de uma lista de inteiros L, em tempo O(N)
+# Ex: [10, 5, 12, 3, 55, 30, 4, 11, 2] 
+# => maior sub-sequência consecutiva = [2, 3, 4, 5]
+# => tamanho da maior sub-sequencia consecutiva = 4
+
+def size_greatest_consec_subseq(arr: list[int]) -> int:
+    occurences :dict[int, bool] = {}
+    greatest_len :int = 0
+
+    for i in arr:
+        occurences[i] = True
+    
+    for i in arr:
+        if not occurences.get(i - 1):
+            current_len :int = 1
+            current_num :int = i
+
+            while occurences.get(current_num + 1):
+                current_num += 1
+                current_len += 1
+
+                if current_len > greatest_len:
+                    greatest_len = current_len
+    
+    return greatest_len
+
+# Complexidade de tempo: O(N)
+# Complexidade de espaço: O(N)
